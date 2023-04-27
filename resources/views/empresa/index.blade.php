@@ -8,7 +8,7 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
                 <div class="text-right">
-                    <a href="{{ route('empresas.create') }}" type="button" class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 ">Cadastrar</a>
+                    <a href="{{ route('empresas.create') }}" type="button" class="text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Cadastrar</a>
                 </div>
             <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
                 <div class="relative overflow-x-auto">
@@ -34,11 +34,18 @@
                                     Veículos
                                 </th>
                                 <th scope="col" class="px-6 py-3">
-                                    Açao
+                                    Ação
                                 </th>
                             </tr>
                         </thead>
                         <tbody>
+                            @if($empresas->count() == 0)
+                                <tr class="text-center bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white" colspan="7">
+                                        Nenhuma empresa cadastrada
+                                    </th>
+                                </tr>
+                            @endif
                             @foreach($empresas as $empresa)
                                 <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                                     <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
@@ -57,10 +64,10 @@
                                         {{ $empresa->email }}
                                     </td>
                                     <td class="px-6 py-4">
-                                        <a type="button" class="text-green-700 hover:text-white border border-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-green-500 dark:text-green-500 dark:hover:text-white dark:hover:bg-green-600 dark:focus:ring-green-800">Veículos</a>
+                                        <a href="/veiculos/{{ $empresa->id }}" type="button" class="text-green-700 hover:text-white border border-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-green-500 dark:text-green-500 dark:hover:text-white dark:hover:bg-green-600 dark:focus:ring-green-800">Veículos</a>
                                     </td>
                                     <td class="px-6 py-4">
-                                        <a href="empresas/{{$empresa->id }}/edit" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Editar</a>
+                                        <a href="empresas/{{ $empresa->id }}/edit" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Editar</a>
                                     </td>
                                 </tr>
                             @endforeach

@@ -5,13 +5,17 @@ namespace App\Services;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use App\Repositories\EmpresaRepository;
+use App\Services\VeiculoService;
+use App\Services\MultaService;
 
 class EmpresaService
 {
     /**
-     * @var BookRepository
+     * @var EmpresaRepository
      */
     private $empresaRepository;
+    private $veiculoService;
+    private $multaService;
 
     /**
      * UserService constructor.
@@ -19,9 +23,11 @@ class EmpresaService
      *
      */
 
-    public function __construct(EmpresaRepository $empresaRepository)
+    public function __construct(EmpresaRepository $empresaRepository, VeiculoService $veiculoService, MultaService $multaService)
     {
         $this->empresaRepository = $empresaRepository;
+        $this->veiculoService = $veiculoService;
+        $this->multaService = $multaService;
     }
 
     public function list()
@@ -36,6 +42,12 @@ class EmpresaService
 
     public function store($attributes)
     {
+        $attributes['cnpj'] = preg_replace('/[^0-9]/', '', $attributes['cnpj']);
+        // $attributes['cep'] = preg_replace('/[^0-9]/', '', $attributes['cep']);
+
+        $attributes['endereco'] = $attributes['logradouro'];
+        unset($attributes['logradouro']);
+
         return $this->empresaRepository->create($attributes);
     }
 
@@ -46,9 +58,28 @@ class EmpresaService
         return $this->empresaRepository->update($id, $attributes);
     }
 
-    public function delete($id)
+    public function veiculos($empresa_id, $veiculo_id = null)
     {
-        
+        $veiculos = $this->veiculoService->list($empresa_id, $veiculo_id)->toArray();
+
+        if($veiculo_id == null)
+        {
+            foreach ($veiculos as $key => $value) {
+                $veiculos[$key]['multas'] = $this->multaService->list($value['id'])->toArray();
+
+            }
+            
+            // Adiciona o total de multas por veículo
+            foreach ($veiculos as $key => $value) {
+                $veiculos[$key]['total_multas'] = count($value['multas']);
+            }
+        }
+        else {
+            $veiculos['multas'] = $this->multaService->list($veiculos['id'])->toArray();
+            $veiculos['total_multas'] = count($veiculos['multas']);
+        }
+    
+        return $veiculos;
     }
 
 

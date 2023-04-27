@@ -9,7 +9,7 @@ class Multa extends Model
 {
     use HasFactory;
 
-    public $timestamps = false;
+    public $timestamps = true;
 
     protected $fillable = [
         'descricao',
@@ -17,6 +17,7 @@ class Multa extends Model
         'valor',
         'quitacao',
         'quitacao_data_hora',
+        'veiculo_id',
         'created_at',
         'updated_at'
     ];

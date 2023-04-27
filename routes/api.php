@@ -2,6 +2,10 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\API\EmpresaApiController as EmpresaApiController;
+use App\Http\Controllers\API\AuthController as AuthController;
+use App\Http\Controllers\API\MultaApiController as MultaApiController;
+use App\Http\Controllers\API\VeiculoApiController as VeiculoApiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +18,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::controller(AuthController::class)->group(function(){
+    Route::post('register', 'register');
+    Route::post('login', 'login');
+});
+
+Route::middleware('auth:sanctum')->group( function () {
+    Route::group(['prefix' => 'empresas'], function() {
+        Route::get('/', [EmpresaApiController::class, 'index']);
+        Route::get('/{id}', [EmpresaApiController::class, 'show']);
+        Route::get('/veiculos/{empresa_id}', [EmpresaApiController::class, 'veiculos']);
+    });
+    Route::group(['prefix' => 'veiculos'], function() {
+        Route::get('/', [VeiculoApiController::class, 'index']);
+        Route::get('/multas', [VeiculoApiController::class, 'multas']);
+    });
+    Route::group(['prefix' => 'multas'], function() {
+        Route::get('/', [MultaApiController::class, 'index']);        
+    });
 });
