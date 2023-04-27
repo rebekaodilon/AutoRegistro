@@ -33,11 +33,6 @@ class MultaRepository extends BaseRepository
         return parent::update($id, $attributes);
     }
 
-    public function findById($id)
-    {
-        return parent::find($id);
-    }
-
     public function destroy($id)
     {
         return parent::destroy($id);

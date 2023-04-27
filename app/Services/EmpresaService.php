@@ -43,7 +43,6 @@ class EmpresaService
     public function store($attributes)
     {
         $attributes['cnpj'] = preg_replace('/[^0-9]/', '', $attributes['cnpj']);
-        // $attributes['cep'] = preg_replace('/[^0-9]/', '', $attributes['cep']);
 
         $attributes['endereco'] = $attributes['logradouro'];
         unset($attributes['logradouro']);
@@ -69,7 +68,6 @@ class EmpresaService
 
             }
             
-            // Adiciona o total de multas por veículo
             foreach ($veiculos as $key => $value) {
                 $veiculos[$key]['total_multas'] = count($value['multas']);
             }

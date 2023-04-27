@@ -32,14 +32,4 @@ class EmpresaRepository extends BaseRepository
     {
         return parent::update($id, $attributes);
     }
-
-    public function findById($id)
-    {
-        return parent::find($id);
-    }
-
-    public function delete($id)
-    {
-        return parent::destroy($id);
-    }
 }

@@ -10,11 +10,7 @@ use Illuminate\Support\Facades\Auth;
 class EmpresasController extends Controller
 {
     private $empresaService;
-    /**
-     * Instantiate a new controller instance.
-     *
-     * @return void
-     */
+    
     public function __construct(EmpresaService $empresaService)
     {
         $this->empresaService = $empresaService;

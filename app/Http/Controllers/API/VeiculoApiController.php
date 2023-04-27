@@ -9,11 +9,7 @@ use Illuminate\Http\Request;
 class VeiculoApiController extends BaseController
 {
     private $veiculoService;
-    /**
-     * Instantiate a new controller instance.
-     *
-     * @return void
-     */
+    
     public function __construct(VeiculoService $veiculoService)
     {
         $this->veiculoService = $veiculoService;

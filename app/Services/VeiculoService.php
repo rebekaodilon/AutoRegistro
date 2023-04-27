@@ -33,13 +33,11 @@ class VeiculoService
         {
             $veiculo = $this->veiculoRepository->show($veiculo_id);
             
-            // Adicionando R$ e trocando . por , para exibir o valor_compra
             $veiculo->valor_compra = 'R$ ' . number_format($veiculo->valor_compra, 2, ',', '.');
         }
         else {
             $veiculo = $this->veiculoRepository->list($empresa_id);
             
-            // Adicionando R$ e trocando . por , para exibir o valor_compra
             foreach ($veiculo as $value) {
                 $value->valor_compra = 'R$ ' . number_format($value->valor_compra, 2, ',', '.');
             }
@@ -92,7 +90,6 @@ class VeiculoService
     {
         $multa = $this->multaService->somaMultas($id);
 
-        // Adicionando R$ e trocando . por , para exibir o valor total
         $multa = 'R$ ' . number_format($multa, 2, ',', '.');
 
         return $multa;

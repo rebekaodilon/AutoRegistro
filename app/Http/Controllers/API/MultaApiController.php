@@ -9,11 +9,7 @@ use Illuminate\Http\Request;
 class MultaApiController extends BaseController
 {
     private $multaService;
-    /**
-     * Instantiate a new controller instance.
-     *
-     * @return void
-     */
+    
     public function __construct(MultaService $multaService)
     {
         $this->multaService = $multaService;

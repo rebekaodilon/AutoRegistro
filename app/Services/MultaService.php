@@ -30,7 +30,6 @@ class MultaService
         {
             $multa = $this->multaRepository->show($multa_id);
 
-            // Adicionando R$ e trocando . por , para exibir o valor
             $multa->valor = 'R$ ' . number_format($multa->valor, 2, ',', '.');
         }
         else {
