@@ -50,3 +50,10 @@ npm run dev
 ```
 php artisan serve
 ```
+## Colleciton API Postman
+Link: https://www.postman.com/orbital-module-architect-4405126/workspace/autoregistro/collection/25533311-d0a3f510-dee2-43b6-bd4f-e258bbd3f99e?action=share&creator=25533311
+
+Ou faça o download
+
+https://drive.google.com/file/d/1xMFknWje8idq2Qvwn7pti7OBZdfseGTd/view?usp=share_link
+
