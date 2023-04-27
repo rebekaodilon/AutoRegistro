@@ -14,7 +14,7 @@ git clone https://github.com/rebekaodilon/AutoRegistro.git
 ```
 2 - Entre na pasta do projeto
 ```
-cd AutouRegistro
+cd AutoRegistro
 ```
 3 - Instale as dependências do Composer
 ```
