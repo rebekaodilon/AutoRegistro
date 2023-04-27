@@ -24,7 +24,7 @@ composer install
 ```
 cp .env.example .env
 ```
-5 - Configure as variáveis de ambiente do arquivo .env com as informações do seu ambiente (o .env.exemple já possui o mesmo nome do database que utilizei)
+5 - Configure as variáveis de ambiente do arquivo .env com as informações do seu ambiente e crie o banco de dados (o .env.exemple já possui o mesmo nome do database que utilizei)
 
 6 - Gere uma nova chave de aplicativo Laravel
 ```
