@@ -19,7 +19,8 @@ class Veiculo extends Model
         'modelo',
         'valor_compra',
         'empresa_id',
-        'created_at'
+        'created_at',
+        'updated_at'
     ];
 
     protected $hidden = [
@@ -34,6 +35,6 @@ class Veiculo extends Model
 
     public function multas()
     {
-        return $this->hasMany(Multas::class);
+        return $this->hasMany(Multa::class);
     }
 }
