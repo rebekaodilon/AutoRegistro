@@ -33,6 +33,10 @@ class VeiculoService
         {
             $veiculo = $this->veiculoRepository->show($veiculo_id);
             
+            if ($veiculo == null) {
+                return response()->json(['error' => 'Veículo não encontrado'], 404);
+            }
+
             $veiculo->valor_compra = 'R$ ' . number_format($veiculo->valor_compra, 2, ',', '.');
         }
         else {
