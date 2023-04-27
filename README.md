@@ -38,6 +38,10 @@ php artisan migrate
 ```
 php artisan db:seed
 ```
+9 - Instale o npm
+```
+npm install
+```
 10 - Inicie o servidor do frontend
 ```
 npm run dev
