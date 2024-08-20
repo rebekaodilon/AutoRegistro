@@ -1,6 +1,3 @@
-# Teste de avaliação técnica - AutoRegistro
-Este projeto foi desenvolvido como parte de um teste de avaliação técnica.
-
 ## Requisitos
 - PHP 8.0 ou superior
 - Composer
